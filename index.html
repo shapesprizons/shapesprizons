@@ -184,15 +184,14 @@
                         <h3 class="wanted-text-small">WANTED</h3>
                         <img src="uploaded:IMG_2848.jpg-8bf6960f-bc4d-493c-bd9b-99a28a25be62"
                              alt="Mugshot of Auralia"
-                             class="mugshot-small"
-                             onerror="this.onerror=null; this.src='https://placehold.co/150x180/6B4226/FFFFFF?text=Image+Failed+to+Load';">
-                        <h4 class="person-name-small">Aurelia "The Whisper"</h4>
+                             class="mugshot-small">
+                        <h4 class="person-name-small">Auralia "The Whisper"</h4>
                         <p class="text-md leading-relaxed text-gray-300 mb-4">
-                            Kidnaped 84 kids, 6 dead. If found text 775-525-1593. WANTED ALIVE, NOT DEAD. 
-                            Warning: Do not Approach or look Directly at this subject. If you do you will be killed.
-                            No matter what you do don't not Follow her!
+                            Sought for grand larceny and evasion of justice. Known for her cunning
+                            disguises and ability to manipulate security systems. Believed to be operating
+                            in the shadows, highly dangerous.
                         </p>
-                        <p class="bounty-text-small">BOUNTY: $1,000,000,000,000,000,000,000</p>
+                        <p class="bounty-text-small">BOUNTY: $1,000,000</p>
                         <p class="status-text-small">DEAD OR ALIVE</p>
                     </div>
                 </div>
@@ -287,33 +286,32 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
                     <p class="text-lg leading-relaxed mb-6 text-gray-300">
-                        For general inquiries, media relations, or specific departmental contacts, please use the information below.
+                        For general inquiries, please use the information below.
                         We are committed to transparent communication and prompt responses.
                     </p>
                     <ul class="text-lg text-gray-300 space-y-4">
-                        <li><strong>Address:</strong> 123 Secure Lane, Shapeville, ST 12345</li>
-                        <li><strong>Phone:</strong> (555) 123-4567</li>
-                        <li><strong>Email:</strong> info@shapesprison.gov</li>
-                        <li><strong>Public Affairs:</strong> publicaffairs@shapesprison.gov</li>
+                        <li><strong>Phone:</strong> (775) 525-1593</li>
+                        <li><strong>Email:</strong> blacksapphireswife1@gmail.com</li>
                     </ul>
                 </div>
                 <div class="bg-gray-700 p-8 rounded-lg shadow-md">
                     <h3 class="text-2xl font-semibold mb-6 text-white">Send Us a Message</h3>
-                    <form>
+                    <form id="contactForm" onsubmit="return submitForm(event)">
                         <div class="mb-4">
                             <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Name:</label>
-                            <input type="text" id="name" name="name" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your Name">
+                            <input type="text" id="name" name="name" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your Name" required>
                         </div>
                         <div class="mb-4">
                             <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email:</label>
-                            <input type="email" id="email" name="email" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="your.email@example.com">
+                            <input type="email" id="email" name="email" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="your.email@example.com" required>
                         </div>
                         <div class="mb-6">
                             <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message:</label>
-                            <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your message..."></textarea>
+                            <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your message..." required></textarea>
                         </div>
                         <button type="submit" class="btn-primary w-full shadow-lg hover:shadow-xl transition-all duration-300">Send Message</button>
                     </form>
+                    <div id="formMessage" class="mt-4 text-center text-green-400 font-semibold hidden"></div>
                 </div>
             </div>
         </div>
@@ -329,5 +327,43 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const formMessage = document.getElementById('formMessage');
+
+            if (!name || !email || !message) {
+                formMessage.textContent = 'Please fill in all fields.';
+                formMessage.classList.remove('hidden', 'text-green-400');
+                formMessage.classList.add('text-red-400');
+                return false;
+            }
+
+            const recipient = 'blacksapphireswife1@gmail.com';
+            const subject = encodeURIComponent('Contact Form Submission from ShapesPrison Website');
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+
+            const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+            window.location.href = mailtoLink;
+
+            formMessage.textContent = 'Your email client should open shortly with your message. Thank you!';
+            formMessage.classList.remove('hidden', 'text-red-400');
+            formMessage.classList.add('text-green-400');
+
+            // Clear the form fields after a short delay
+            setTimeout(() => {
+                document.getElementById('contactForm').reset();
+                formMessage.classList.add('hidden'); // Hide message after clearing
+            }, 5000); // Hide message after 5 seconds
+
+            return false; // Prevent actual form submission
+        }
+    </script>
 </body>
 </html>
