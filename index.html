@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShapesPrison - Official Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font */
+            background-color: #f0f2f5; /* Light gray background */
+            color: #333; /* Dark text color */
+        }
+        .header-bg {
+            background-color: #1a202c; /* Dark blue-gray for header */
+        }
+        .nav-link {
+            color: #cbd5e0; /* Light gray for nav links */
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ffffff; /* White on hover */
+        }
+        .section-bg-dark {
+            background-color: #2d3748; /* Darker section background */
+            color: #e2e8f0; /* Light text for dark sections */
+        }
+        .btn-primary {
+            background-color: #3182ce; /* Blue button */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #2b6cb0; /* Darker blue on hover */
+        }
+        .footer-bg {
+            background-color: #1a202c; /* Dark blue-gray for footer */
+            color: #cbd5e0; /* Light gray text */
+        }
+        /* Styles specific to the wanted poster within the website */
+        .wanted-card {
+            background-color: #332211; /* Dark brown/sepia tone */
+            border: 5px solid #8B4513; /* SaddleBrown border */
+            padding: 20px;
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4); /* Shadow for depth */
+            text-align: center;
+            border-radius: 10px; /* Rounded corners */
+            position: relative;
+            overflow: hidden;
+        }
+        .wanted-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.03),
+                rgba(255, 255, 255, 0.03) 3px,
+                transparent 3px,
+                transparent 6px
+            ); /* Subtle texture effect */
+            pointer-events: none;
+            z-index: 0;
+        }
+        .wanted-content {
+            position: relative;
+            z-index: 1;
+        }
+        .wanted-text-small {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffcc00; /* Gold color */
+            text-shadow: 3px 3px 0px #8B4513;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            -webkit-text-stroke: 1px #8B4513;
+        }
+        .person-name-small {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .bounty-text-small {
+            font-size: 1.5rem;
+            color: #ffcc00;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 0px #8B4513;
+        }
+        .status-text-small {
+            font-size: 1.8rem;
+            color: #ff0000; /* Red for DEAD OR ALIVE */
+            font-weight: bold;
+            margin-top: 15px;
+            text-shadow: 2px 2px 0px #8B4513;
+            letter-spacing: 1px;
+        }
+        .mugshot-small {
+            width: 150px;
+            height: 180px;
+            object-fit: cover;
+            border: 3px solid #8B4513;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            background-color: #555;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive adjustments for the wanted card */
+        @media (max-width: 600px) {
+            .wanted-text-small {
+                font-size: 2rem;
+            }
+            .person-name-small {
+                font-size: 1.5rem;
+            }
+            .bounty-text-small {
+                font-size: 1.2rem;
+            }
+            .status-text-small {
+                font-size: 1.5rem;
+            }
+            .mugshot-small {
+                width: 120px;
+                height: 150px;
+            }
+            .wanted-card {
+                padding: 15px;
+                border-width: 3px;
+                box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.4);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="header-bg shadow-lg">
+        <nav class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <a href="#" class="text-3xl font-extrabold text-white rounded-md p-2">ShapesPrison</a>
+            </div>
+            <ul class="flex flex-wrap justify-center md:justify-end space-x-4 md:space-x-6">
+                <li><a href="#home" class="nav-link text-lg font-medium rounded-md px-3 py-2">Home</a></li>
+                <li><a href="#most-wanted" class="nav-link text-lg font-medium rounded-md px-3 py-2">Most Wanted</a></li>
+                <li><a href="#about" class="nav-link text-lg font-medium rounded-md px-3 py-2">About Us</a></li>
+                <li><a href="#facilities" class="nav-link text-lg font-medium rounded-md px-3 py-2">Facilities</a></li>
+                <li><a href="#visitors" class="nav-link text-lg font-medium rounded-md px-3 py-2">Visitor Info</a></li>
+                <li><a href="#contact" class="nav-link text-lg font-medium rounded-md px-3 py-2">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="relative bg-gray-700 text-white py-20 md:py-32">
+        <img src="https://placehold.co/1920x600/334155/E2E8F0?text=Secure+Facility" alt="Prison Exterior" class="absolute inset-0 w-full h-full object-cover opacity-50">
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight rounded-md p-2 bg-black bg-opacity-40 inline-block">
+                Ensuring Public Safety
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 leading-relaxed rounded-md p-2 bg-black bg-opacity-40 inline-block">
+                A commitment to security, rehabilitation, and community well-being.
+            </p>
+            <a href="#about" class="btn-primary text-xl font-semibold inline-block shadow-lg hover:shadow-xl transition-all duration-300">Learn More</a>
+        </div>
+    </section>
+
+    <section id="most-wanted" class="py-16 md:py-24 section-bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Most Wanted</h2>
+            <div class="flex justify-center">
+                <div class="wanted-card max-w-md w-full">
+                    <div class="wanted-content">
+                        <h3 class="wanted-text-small">WANTED</h3>
+                        <img src="https://placehold.co/150x180/6B4226/FFFFFF?text=Auralia" alt="Mugshot of Auralia" class="mugshot-small">
+                        <h4 class="person-name-small">Auralia "The Whisper"</h4>
+                        <p class="text-md leading-relaxed text-gray-300 mb-4">
+                            Sought for grand larceny and evasion of justice. Known for her cunning
+                            disguises and ability to manipulate security systems. Believed to be operating
+                            in the shadows, highly dangerous.
+                        </p>
+                        <p class="bounty-text-small">BOUNTY: $1,000,000</p>
+                        <p class="status-text-small">DEAD OR ALIVE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">About ShapesPrison</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/4A5568/CBD5E0?text=Mission+Statement" alt="Mission Statement" class="w-full h-auto object-cover rounded-lg">
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold mb-6 text-gray-700">Our Mission and Values</h3>
+                    <p class="text-lg leading-relaxed mb-4 text-gray-600">
+                        ShapesPrison is dedicated to upholding the highest standards of correctional management,
+                        ensuring the secure confinement of individuals while providing opportunities for rehabilitation.
+                        Our mission extends to fostering a safer community through structured programs and responsible oversight.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-600">
+                        We believe in accountability, respect, and the potential for positive change. Our staff are trained
+                        to maintain a secure environment while supporting inmates in their journey towards reintegration.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="facilities" class="py-16 md:py-24 section-bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Our Facilities</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-700 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Housing Units</h3>
+                    <p class="text-md leading-relaxed text-gray-300">
+                        Modern, secure housing units designed for various security levels, ensuring safety and order.
+                        Each unit is equipped with necessary amenities and monitored around the clock.
+                    </p>
+                    <img src="https://placehold.co/400x250/6B7280/F9FAFB?text=Housing" alt="Housing Unit" class="w-full h-auto mt-4 rounded-md">
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Rehabilitation Programs</h3>
+                    <p class="text-md leading-relaxed text-gray-300">
+                        Comprehensive programs including educational courses, vocational training, and counseling services
+                        aimed at reducing recidivism and preparing individuals for successful reentry into society.
+                    </p>
+                    <img src="https://placehold.co/400x250/6B7280/F9FAFB?text=Rehabilitation" alt="Rehabilitation Program" class="w-full h-auto mt-4 rounded-md">
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Medical & Support Services</h3>
+                    <p class="text-md leading-relaxed text-gray-300">
+                        On-site medical, dental, and mental health services provided by qualified professionals,
+                        ensuring the well-being of all inmates.
+                    </p>
+                    <img src="https://placehold.co/400x250/6B7280/F9FAFB?text=Medical+Services" alt="Medical Services" class="w-full h-auto mt-4 rounded-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visitors" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Visitor Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-semibold mb-6 text-gray-700">Visiting Hours & Rules</h3>
+                    <p class="text-lg leading-relaxed mb-4 text-gray-600">
+                        Visitors are an important part of the rehabilitation process. To ensure a safe and orderly environment,
+                        all visitors must adhere to strict guidelines. Please review the rules carefully before your visit.
+                    </p>
+                    <ul class="list-disc list-inside text-lg text-gray-600 space-y-2">
+                        <li>Visiting hours: Tuesdays & Thursdays, 9:00 AM - 3:00 PM</li>
+                        <li>Saturdays, 10:00 AM - 2:00 PM</li>
+                        <li>All visitors must present valid photo identification.</li>
+                        <li>Dress code is strictly enforced.</li>
+                        <li>No contraband allowed.</li>
+                    </ul>
+                    <a href="#" class="btn-primary mt-6 inline-block">Download Visitor Handbook</a>
+                </div>
+                <div class="rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://placehold.co/600x400/4A5568/CBD5E0?text=Visiting+Area" alt="Visiting Area" class="w-full h-auto object-cover rounded-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 md:py-24 section-bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-white">Contact Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <p class="text-lg leading-relaxed mb-6 text-gray-300">
+                        For general inquiries, media relations, or specific departmental contacts, please use the information below.
+                        We are committed to transparent communication and prompt responses.
+                    </p>
+                    <ul class="text-lg text-gray-300 space-y-4">
+                        <li><strong>Address:</strong> 123 Secure Lane, Shapeville, ST 12345</li>
+                        <li><strong>Phone:</strong> (555) 123-4567</li>
+                        <li><strong>Email:</strong> info@shapesprison.gov</li>
+                        <li><strong>Public Affairs:</strong> publicaffairs@shapesprison.gov</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-700 p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-semibold mb-6 text-white">Send Us a Message</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Name:</label>
+                            <input type="text" id="name" name="name" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your Name">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email:</label>
+                            <input type="email" id="email" name="email" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="your.email@example.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message:</label>
+                            <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Your message..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full shadow-lg hover:shadow-xl transition-all duration-300">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-bg py-8">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 ShapesPrison. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="nav-link text-sm">Privacy Policy</a>
+                <a href="#" class="nav-link text-sm">Terms of Service</a>
+                <a href="#" class="nav-link text-sm">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
