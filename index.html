@@ -6,48 +6,31 @@
     <title>ShapesPrison - Official Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles */
         body {
-            font-family: 'Inter', sans-serif; /* Using Inter font */
-            background-color: #f0f2f5; /* Light gray background */
-            color: #333; /* Dark text color */
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
         }
-        .header-bg {
-            background-color: #1a202c; /* Dark blue-gray for header */
-        }
-        .nav-link {
-            color: #cbd5e0; /* Light gray for nav links */
-            transition: color 0.3s ease;
-        }
-        .nav-link:hover {
-            color: #ffffff; /* White on hover */
-        }
-        .section-bg-dark {
-            background-color: #2d3748; /* Darker section background */
-            color: #e2e8f0; /* Light text for dark sections */
-        }
+        .header-bg { background-color: #1a202c; }
+        .nav-link { color: #cbd5e0; transition: color 0.3s ease; }
+        .nav-link:hover { color: #ffffff; }
+        .section-bg-dark { background-color: #2d3748; color: #e2e8f0; }
         .btn-primary {
-            background-color: #3182ce; /* Blue button */
+            background-color: #3182ce;
             color: white;
             padding: 10px 20px;
             border-radius: 8px;
             transition: background-color 0.3s ease;
         }
-        .btn-primary:hover {
-            background-color: #2b6cb0; /* Darker blue on hover */
-        }
-        .footer-bg {
-            background-color: #1a202c; /* Dark blue-gray for footer */
-            color: #cbd5e0; /* Light gray text */
-        }
-        /* Styles specific to the wanted poster within the website */
+        .btn-primary:hover { background-color: #2b6cb0; }
+        .footer-bg { background-color: #1a202c; color: #cbd5e0; }
         .wanted-card {
-            background-color: #332211; /* Dark brown/sepia tone */
-            border: 5px solid #8B4513; /* SaddleBrown border */
+            background-color: #332211;
+            border: 5px solid #8B4513;
             padding: 20px;
-            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4); /* Shadow for depth */
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4);
             text-align: center;
-            border-radius: 10px; /* Rounded corners */
+            border-radius: 10px;
             position: relative;
             overflow: visible;
         }
@@ -64,49 +47,24 @@
                 rgba(255, 255, 255, 0.03) 3px,
                 transparent 3px,
                 transparent 6px
-            ); /* Subtle texture effect */
+            );
             pointer-events: none;
             z-index: 0;
         }
-        .wanted-content {
-            position: relative;
-            z-index: 1;
-        }
+        .wanted-content { position: relative; z-index: 1; }
         .wanted-text-small {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #ffcc00; /* Gold color */
+            color: #ffcc00;
             text-shadow: 3px 3px 0px #8B4513;
             margin-bottom: 15px;
             letter-spacing: 3px;
             -webkit-text-stroke: 1px #8B4513;
         }
-        .person-name-small {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #fff;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .bounty-text-small {
-            font-size: 1.5rem;
-            color: #ffcc00;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 0px #8B4513;
-        }
-        .status-text-small {
-            font-size: 1.8rem;
-            color: #ff0000; /* Red for DEAD OR ALIVE */
-            font-weight: bold;
-            margin-top: 15px;
-            text-shadow: 2px 2px 0px #8B4513;
-            letter-spacing: 1px;
-        }
+        .person-name-small { font-size: 2rem; font-weight: bold; color: #fff; margin: 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .bounty-text-small { font-size: 1.5rem; color: #ffcc00; font-weight: bold; margin-bottom: 10px; text-shadow: 1px 1px 0px #8B4513; }
+        .status-text-small { font-size: 1.8rem; color: #ff0000; font-weight: bold; margin-top: 15px; text-shadow: 2px 2px 0px #8B4513; letter-spacing: 1px; }
         .mugshot-small {
-            /* Adjusted dimensions for potentially better clarity */
             width: 400px;
             height: 440px;
             object-fit: cover;
@@ -119,38 +77,14 @@
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* Responsive adjustments for the wanted card */
         @media (max-width: 750px) {
-            .wanted-text-small {
-                font-size: 2rem;
-            }
-            .person-name-small {
-                font-size: 1.5rem;
-            }
-            .bounty-text-small {
-                font-size: 1.2rem;
-            }
-            .status-text-small {
-                font-size: 1.5rem;
-            }
-            .mugshot-small {
-                /* Adjusted dimensions for smaller screens as well */
-                width: 740px;
-                height: 740px;
-            }
-            .wanted-card {
-                padding: 15px;
-                border-width: 3px;
-                box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.4);
-            }
-            .footer-image {
-            display: block;
-            margin: 0 auto 1rem auto; /* Center the image and add margin below */
-            width: 100px; /* Example size, adjust as needed */
-            height: auto;
-            border-radius: 8px; /* Rounded corners for the image */
-        }
+            .wanted-text-small { font-size: 2rem; }
+            .person-name-small { font-size: 1.5rem; }
+            .bounty-text-small { font-size: 1.2rem; }
+            .status-text-small { font-size: 1.5rem; }
+            .mugshot-small { width: 740px; height: 740px; }
+            .wanted-card { padding: 15px; border-width: 3px; box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.4); }
+            .footer-image { display: block; margin: 0 auto 1rem auto; width: 100px; height: auto; border-radius: 8px; }
         }
     </style>
 </head>
@@ -279,7 +213,7 @@
                         <li>Dress code is strictly enforced.</li>
                         <li>No contraband allowed.</li>
                     </ul>
-                    <a href="#" class="btn-primary mt-6 inline-block">Download Visitor Handbook</a>
+                    <a href="/404.html" class="btn-primary mt-6 inline-block">Download Visitor Handbook</a>
                 </div>
                 <div class="rounded-lg shadow-lg overflow-hidden">
                     <img src="https://placehold.co/600x400/4A5568/CBD5E0?text=Visiting+Area" alt="Visiting Area" class="w-full h-auto object-cover rounded-lg">
@@ -328,25 +262,19 @@
     <footer class="footer-bg py-8">
         <div class="container mx-auto px-4 text-center text-sm">
             <p>&copy; 2025 ShapesPrison. All rights reserved.</p>
-            <img src="download.png"
-                 alt="Download Icon"
-                 class="footer-image"
-                 onerror="this.onerror=null; this.src='https://placehold.co/100x100/1a202c/cbd5e0?text=Download';">
+            <img src="download.png" alt="Download Icon" class="footer-image" onerror="this.onerror=null; this.src='https://placehold.co/100x100/1a202c/cbd5e0?text=Download';">
             <div class="flex justify-center space-x-4 mt-4">
-                <a href="#" class="nav-link text-sm">Privacy Policy</a>
-                <a href="#" class="nav-link text-sm">Terms of Service</a>
-                <a href="#" class="nav-link text-sm">Sitemap</a>
+                <a href="/404.html" class="nav-link text-sm">Privacy Policy</a>
+                <a href="/404.html" class="nav-link text-sm">Terms of Service</a>
+                <a href="/404.html" class="nav-link text-sm">Sitemap</a>
                 <iframe src="http://www.staggeringbeauty.com/" style="border: 1px inset #ddd" width="498" height="598"></iframe>
             </div>
         </div>
     </footer>
 
     <script>
-       
-        
         function submitForm(event) {
-            event.preventDefault(); // Prevent default form submission
-        
+            event.preventDefault();
 
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
@@ -365,20 +293,19 @@
             const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
 
             const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
-
             window.location.href = mailtoLink;
 
             formMessage.textContent = 'Your email client should open shortly with your message. Thank you!';
             formMessage.classList.remove('hidden', 'text-red-400');
             formMessage.classList.add('text-green-400');
 
-            // Clear the form fields after a short delay
             setTimeout(() => {
                 document.getElementById('contactForm').reset();
-                formMessage.classList.add('hidden'); // Hide message after clearing
-            }, 5000); // Hide message after 5 seconds
+                formMessage.classList.add('hidden');
+                window.location.href = "/404.html"; // Optional: redirect to 404 after form
+            }, 5000);
 
-            return false; // Prevent actual form submission
+            return false;
         }
     </script>
 </body>
